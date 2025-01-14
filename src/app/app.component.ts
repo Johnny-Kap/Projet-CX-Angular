@@ -32,5 +32,4 @@ export class AppComponent  {
     return this.userName;
   }
 
-
 }

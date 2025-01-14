@@ -11,14 +11,16 @@ import { AuthService } from '../auth.service';
   template: `<p>Connexion en cours...</p>`,
 })
 export class CallbackComponent implements OnInit {
-  
-  constructor(private authService: AuthService, private route: ActivatedRoute){}
+
+  filteredUserInfo: any = {};
+
+  constructor(private authService: AuthService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-      
+
     const code = this.route.snapshot.queryParamMap.get('code');
 
-    if(code){
+    if (code) {
       this.authService.getToken(code).subscribe({
         next: (response) => {
           const token = response['access_token'];
@@ -27,13 +29,16 @@ export class CallbackComponent implements OnInit {
 
           this.authService.getUserInfo(token).subscribe((userInfo) => {
             console.log('User info:', userInfo);
+            this.filteredUserInfo = {
+              name: userInfo.name,
+            }
           });
         },
         error: (err) => {
           console.error('Error fetching token:', err);
         },
       });
-    }else{
+    } else {
       console.error('Authorization code not found in callback URL.');
     }
   }
