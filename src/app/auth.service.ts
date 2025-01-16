@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,12 +16,13 @@ export class AuthService {
   private clientSecret = 'secret-3ef8b4de-a19e-9add-58bb-5c027fcf0a6';
   private redirectUri = 'http://localhost:4200/callback';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   login(){
 
     const url = `${this.authUrl}?response_type=code&client_id=${this.clientId}&prompt=none`;
-    window.location.href = url; 
+    window.location.href = url;
+
   }
 
   getToken(authCode: string): Observable<any>{
@@ -31,6 +33,8 @@ export class AuthService {
     body.set('redirect_uri', this.redirectUri);
     body.set('client_id', this.clientId);
     body.set('client_secret', this.clientSecret);
+
+    window.localStorage.setItem("code", authCode);
 
     const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
 

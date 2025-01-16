@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthModule } from '../auth/auth.module';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-callback',
@@ -15,8 +16,8 @@ export class CallbackComponent implements OnInit {
   filteredUserInfo: any = {};
 
   roleNames: string[] = [];
-
-  constructor(private authService: AuthService, private route: ActivatedRoute) { }
+  
+  constructor(private authService: AuthService, private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
 
