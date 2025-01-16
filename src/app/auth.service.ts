@@ -21,7 +21,12 @@ export class AuthService {
   login(){
 
     const url = `${this.authUrl}?response_type=code&client_id=${this.clientId}&prompt=none`;
+
     window.location.href = url;
+
+    this.getFinalUrl(url);
+    
+    // console.log('')
 
   }
 
@@ -34,7 +39,7 @@ export class AuthService {
     body.set('client_id', this.clientId);
     body.set('client_secret', this.clientSecret);
 
-    window.localStorage.setItem("code", authCode);
+    // window.localStorage.setItem("code", authCode);
 
     const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
 
@@ -48,4 +53,16 @@ export class AuthService {
 
     return this.http.get(this.apiUrl, {headers});
   }
+
+  getFinalUrl(url: string): void {
+    this.http.head(url, { observe: 'response' }).subscribe(
+      (response) => {
+        console.log('Final URL:', response.url);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+
 }
