@@ -14,11 +14,15 @@ export class CallbackComponent implements OnInit {
 
   filteredUserInfo: any = {};
 
+  roleNames: string[] = [];
+
   constructor(private authService: AuthService, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
     const code = this.route.snapshot.queryParamMap.get('code');
+
+    console.log(" == code == ", code);
 
     if (code) {
       this.authService.getToken(code).subscribe({
@@ -30,8 +34,11 @@ export class CallbackComponent implements OnInit {
           this.authService.getUserInfo(token).subscribe((userInfo) => {
             console.log('User info:', userInfo);
             this.filteredUserInfo = {
+              id: userInfo.id,
               name: userInfo.name,
-            }
+              email: userInfo.emailAddress,
+            };
+            this.roleNames = userInfo.roleBriefs.map((role: any) => role.name);
           });
         },
         error: (err) => {

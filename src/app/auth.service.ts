@@ -11,15 +11,15 @@ export class AuthService {
   private tokenUrl = 'http://192.168.3.35:8080/o/oauth2/token';
   private apiUrl = 'http://192.168.3.35:8080/o/headless-admin-user/v1.0/my-user-account';
 
-  private clientId = 'id-eaab5b71-c6f7-4c4c-9e6d-d383369b1a8';
-  private clientSecret = 'secret-3fc282e0-1979-5312-c442-322328f49d';
+  private clientId = 'id-902c199e-cc5b-2ade-82ab-d33174cf4c4';
+  private clientSecret = 'secret-3ef8b4de-a19e-9add-58bb-5c027fcf0a6';
   private redirectUri = 'http://localhost:4200/callback';
 
   constructor(private http: HttpClient) { }
 
   login(){
 
-    const url = `${this.authUrl}?response_type=code&client_id=${this.clientId}`;
+    const url = `${this.authUrl}?response_type=code&client_id=${this.clientId}&prompt=none`;
     window.location.href = url; 
   }
 
