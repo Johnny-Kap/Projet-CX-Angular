@@ -21,8 +21,10 @@ export class CallbackComponent implements OnInit {
 
   ngOnInit() {
 
-    const code = this.route.snapshot.queryParamMap.get('code');
+    // const code = this.route.snapshot.queryParamMap.get('code');
 
+    const code = localStorage.getItem('authCode');
+    
     console.log(" == code == ", code);
 
     if (code) {
