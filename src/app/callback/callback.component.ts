@@ -3,10 +3,11 @@ import { AuthModule } from '../auth/auth.module';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-callback',
-  imports: [],
+  imports: [HeaderComponent],
   templateUrl: './callback.component.html',
   styleUrl: './callback.component.css',
   template: `<p>Connexion en cours...</p>`,

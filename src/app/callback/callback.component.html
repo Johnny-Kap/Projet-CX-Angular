@@ -1,4 +1,4 @@
-<p>callback works! Welcome {{filteredUserInfo.name}}</p>
+<!-- <p class="">Welcome {{filteredUserInfo.name}}</p>
 
 
 <div>
@@ -26,4 +26,40 @@
             </div>
         </dl>
     </div>
-</div>
+</div> -->
+
+<app-header></app-header>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white rounded-lg shadow p-6 w-full max-w-sm">
+        <div class="flex justify-between items-center mb-4">
+            <div>
+                <h2 class="text-gray-600">Bienvenue,</h2>
+                <p class="text-2xl font-semibold">{{filteredUserInfo.name}}</p>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="space-y-4">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-id-badge text-gray-400"></i>
+                <span class="text-gray-600">ID: {{filteredUserInfo.id}}</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-user text-gray-400"></i>
+                <span class="text-gray-600">Nom(s) : {{filteredUserInfo.name}}</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-envelope text-gray-400"></i>
+                <span class="text-gray-600">Email : {{filteredUserInfo.email}}</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-lock text-gray-400"></i>
+                <span class="text-gray-600">Roles : {{roleNames}}</span>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="bg-gray-200 text-gray-700 text-center py-2 rounded">
+            Utilisateur connecté
+        </div>
+    </div>
+</body>

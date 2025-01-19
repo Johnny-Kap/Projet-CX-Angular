@@ -8,12 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private authUrl = 'http://192.168.3.35:8080/o/oauth2/authorize';
-  private tokenUrl = 'http://192.168.3.35:8080/o/oauth2/token';
-  private apiUrl = 'http://192.168.3.35:8080/o/headless-admin-user/v1.0/my-user-account';
+  private authUrl = 'http://127.0.0.1:8080/o/oauth2/authorize';
+  private tokenUrl = 'http://127.0.0.1:8080/o/oauth2/token';
+  // private apiUrl = 'http://192.168.3.35:8080/o/headless-admin-user/v1.0/my-user-account';
+  private apiUrl = 'http://127.0.0.1:8080/o/headless-admin-user/v1.0/my-user-account';
 
-  private clientId = 'id-902c199e-cc5b-2ade-82ab-d33174cf4c4';
-  private clientSecret = 'secret-3ef8b4de-a19e-9add-58bb-5c027fcf0a6';
+  private clientId = 'id-ac29ff67-5e45-5419-aaf2-454a9e999ff';
+  private clientSecret = 'secret-b4533354-f123-5674-2146-2cf94fd37f4';
   private redirectUri = 'http://localhost:4200/callback';
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
